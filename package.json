@@ -1,0 +1,24 @@
+{
+  "name": "yeteshale1",
+  "version": "1.0.1",
+  "description": "This is app will used for showing different kind of solar product from different company.It will contain product specification and the adress of the product that the compony have and its price will be shown to only for the admin. The user will rate the product in the future version of the app. I will contain Google adsSens.",
+  "main": "app.js",
+  "scripts": {
+    "test": "nodemon app"
+  },
+  "keywords": [
+    "\"solar\""
+  ],
+  "author": "\"product\",",
+  "license": "ISC",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cors": "^2.8.5",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "jsonwebtoken": "^8.5.1",
+    "multer": "^1.4.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.12.0-beta.1"
+  }
+}

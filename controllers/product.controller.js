@@ -49,6 +49,40 @@ exports.findAll = (req, res)=>{
         })
     })
 }
+//retrieve data for single product with id
+exports.findOne = (req,res)=>{
+    const id = req.params.id;
+    Product.findByPk(id).then(data=>{
+        if(data){
+            res.send(data)
+        } else{
+            res.status(404).send({
+                message: `Cannot find Tutorial with id=${id}`
+            })
+        }
+    })
+    .catch(err => {
+        res.status(500).send({
+            message:`Error retrieving Tutorial with id= ${id}`
+        })
+    })
+}
+
+//Retrieve product with category and main category from database on future use limit
+exports.findSome = (req, res)=>{
+    // fetch product with category
+    const category = req.params.category;
+
+    Product.findAll({category:category})
+    .then(data => {
+        res.send(data)
+    })
+    .catch(err => {
+        res.status(500).send({
+            message : err.message || "Some error occurred while retrieving Product"
+        })
+    })
+}
 
 //Update a Product by the id
 exports.update = (req,res)=>{

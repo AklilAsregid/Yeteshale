@@ -12,17 +12,18 @@ if(!req.body.name){
     })
     return;
 }
-
+const purl = req.body.name.toLowerCase().trim().split(/\s+/).join('-');
 // create a product
 // i have to add image with compressing or later..
 const product = {
     name:req.body.name,
     description: req.body.description,
     price:req.body.price,
-    address:req.body.adress,
+    address:req.body.address,
     condition:req.body.condition,
     category : req.body.category,
-    mainCategory : req.body.mainCategory
+    mainCategory : req.body.mainCategory,
+    url: purl
 }
 
 //Save the Product in the database
@@ -51,19 +52,20 @@ exports.findAll = (req, res)=>{
 }
 //retrieve data for single product with id
 exports.findOne = (req,res)=>{
-    const id = req.params.id;
-    Product.findByPk(id).then(data=>{
+    const url = req.params.url;
+    console.log(url)
+    Product.findOne({where : {url : url} }).then(data=>{
         if(data){
             res.send(data)
         } else{
             res.status(404).send({
-                message: `Cannot find Tutorial with id=${id}`
+                message: `Cannot find Tutorial with name= ${url}`
             })
         }
     })
     .catch(err => {
         res.status(500).send({
-            message:`Error retrieving Tutorial with id= ${id}`
+            message:`Error retrieving Tutorial with name= ${url}`
         })
     })
 }

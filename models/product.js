@@ -30,6 +30,13 @@ module.exports = (sequelize, Sequelize)=>{
         },
         image:{
             type:Sequelize.STRING
+        },
+        url:{
+            type: Sequelize.STRING,
+            allowNull: false,
+        },
+        note:{
+            type: Sequelize.STRING,
         }
 
     })
